@@ -37,6 +37,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.labelDateBegin = new System.Windows.Forms.Label();
             this.labelFinalDate = new System.Windows.Forms.Label();
+            this.labelConsumables = new System.Windows.Forms.Label();
+            this.richTextBoxConsumables = new System.Windows.Forms.RichTextBox();
+            this.labelConsumPrice = new System.Windows.Forms.Label();
+            this.textBoxConsumPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxWork
@@ -90,7 +94,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(12, 197);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 376);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(277, 23);
             this.buttonAdd.TabIndex = 6;
@@ -116,11 +120,48 @@
             this.labelFinalDate.TabIndex = 8;
             this.labelFinalDate.Text = "Срок выполнения заказа";
             // 
+            // labelConsumables
+            // 
+            this.labelConsumables.AutoSize = true;
+            this.labelConsumables.Location = new System.Drawing.Point(9, 204);
+            this.labelConsumables.Name = "labelConsumables";
+            this.labelConsumables.Size = new System.Drawing.Size(209, 13);
+            this.labelConsumables.TabIndex = 9;
+            this.labelConsumables.Text = "Введите список расходных материалов";
+            // 
+            // richTextBoxConsumables
+            // 
+            this.richTextBoxConsumables.Location = new System.Drawing.Point(12, 221);
+            this.richTextBoxConsumables.Name = "richTextBoxConsumables";
+            this.richTextBoxConsumables.Size = new System.Drawing.Size(277, 95);
+            this.richTextBoxConsumables.TabIndex = 10;
+            this.richTextBoxConsumables.Text = "";
+            // 
+            // labelConsumPrice
+            // 
+            this.labelConsumPrice.AutoSize = true;
+            this.labelConsumPrice.Location = new System.Drawing.Point(12, 333);
+            this.labelConsumPrice.Name = "labelConsumPrice";
+            this.labelConsumPrice.Size = new System.Drawing.Size(183, 13);
+            this.labelConsumPrice.TabIndex = 11;
+            this.labelConsumPrice.Text = "Стоимость расходных материалов";
+            // 
+            // textBoxConsumPrice
+            // 
+            this.textBoxConsumPrice.Location = new System.Drawing.Point(12, 350);
+            this.textBoxConsumPrice.Name = "textBoxConsumPrice";
+            this.textBoxConsumPrice.Size = new System.Drawing.Size(277, 20);
+            this.textBoxConsumPrice.TabIndex = 12;
+            // 
             // AddWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(301, 230);
+            this.ClientSize = new System.Drawing.Size(301, 406);
+            this.Controls.Add(this.textBoxConsumPrice);
+            this.Controls.Add(this.labelConsumPrice);
+            this.Controls.Add(this.richTextBoxConsumables);
+            this.Controls.Add(this.labelConsumables);
             this.Controls.Add(this.labelFinalDate);
             this.Controls.Add(this.labelDateBegin);
             this.Controls.Add(this.buttonAdd);
@@ -149,5 +190,9 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Label labelDateBegin;
         private System.Windows.Forms.Label labelFinalDate;
+        private System.Windows.Forms.Label labelConsumables;
+        private System.Windows.Forms.RichTextBox richTextBoxConsumables;
+        private System.Windows.Forms.Label labelConsumPrice;
+        private System.Windows.Forms.TextBox textBoxConsumPrice;
     }
 }

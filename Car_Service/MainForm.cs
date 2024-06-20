@@ -43,14 +43,17 @@ namespace Car_Service
             connection.Open();
             string cmd = $@"
 SELECT
-        [Номер заказа]               = works_id,
-        [Работа]                     = work_description,
-        [Автомобиль]                 = FORMATMESSAGE('%s %s %s', manufacturer, model, registration_number),
-        [Дата заказа]                = FORMAT(date_begin, 'dd.MM.yyyy'),
-        [Срок выполнения заказа]     = FORMAT(final_date, 'dd.MM.yyyy'),
-        [Дата Выполнения]            = FORMAT(date_end, 'dd.MM.yyyy'),
-        [Работник]                   = FORMATMESSAGE('%s %s %s', Workers.last_name, Workers.first_name, Workers.middle_name),
-        [Стоимость]                  = WorksList.Price * Cars.coef
+        [Номер заказа]                      = works_id,
+        [Работа]                            = work_description,
+        [Автомобиль]                        = FORMATMESSAGE('%s %s %s', manufacturer, model, registration_number),
+        [Дата заказа]                       = FORMAT(date_begin, 'dd.MM.yyyy'),
+        [Срок выполнения заказа]            = FORMAT(final_date, 'dd.MM.yyyy'),
+        [Дата Выполнения]                   = FORMAT(date_end, 'dd.MM.yyyy'),
+        [Работник]                          = FORMATMESSAGE('%s %s %s', Workers.last_name, Workers.first_name, Workers.middle_name),
+        [Стоимость работы]                  = WorksList.Price * Cars.coef,
+        [Расходные материалы]               = consumables,
+        [Стоимость расходных материалов]    = consumables_price,
+        [Общая стоимость работ]             = WorksList.Price * Cars.coef+consumables_price
 FROM    Works, WorksList, Cars, Workers
 WHERE   Works.[work] = WorksList.work_id
 AND     Works.worker = Workers.worker_id
@@ -250,7 +253,8 @@ FROM    Workers
         private void dataGridViewWorks_DataSourceChanged(object sender, EventArgs e)
         {
             Double sum = 0;
-            for (int i = 0; i < dataGridViewWorks.RowCount; i++) sum += Convert.ToDouble(dataGridViewWorks[dataGridViewWorks.ColumnCount-1,i].Value);
+            for (int i = 0; i < dataGridViewWorks.RowCount; i++)
+                sum += Convert.ToDouble(dataGridViewWorks[7,i].Value)+ Convert.ToDouble(dataGridViewWorks[9, i].Value);
             toolStripStatusSum.Text = "Стоимость выбранных заказов: " + sum.ToString();
             toolStripStatusLabelCount.Text = $"Количество выбранных заказов: {dataGridViewWorks.RowCount - 1}";
         }
@@ -280,15 +284,20 @@ FROM    Workers
         {
             int id = Convert.ToInt32(dataGridViewWorks.SelectedCells[0].Value);
 
-            string cmd = $@"
+            DialogResult dialogResult = MessageBox.Show(this,"Удалить запись?", "Удаление", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                string cmd = $@"
 DELETE Works
 WHERE  works_id = '{id}'
                 ";
-            connection.Open();
-            SqlCommand command = new SqlCommand(cmd, connection);
-            command.ExecuteNonQuery();
-            connection.Close();
-            LoadWorks();
+                connection.Open();
+                SqlCommand command = new SqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+                LoadWorks();
+            }
+
         }
 
         private void buttonFindCar_Click(object sender, EventArgs e)

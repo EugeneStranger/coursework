@@ -33,6 +33,10 @@
             this.buttonWorksUpdate = new System.Windows.Forms.Button();
             this.labelWorkUpdate = new System.Windows.Forms.Label();
             this.radioButtonDateEnd = new System.Windows.Forms.RadioButton();
+            this.richTextBoxConsumables = new System.Windows.Forms.RichTextBox();
+            this.radioButtonConsumables = new System.Windows.Forms.RadioButton();
+            this.labelConsumPrice = new System.Windows.Forms.Label();
+            this.textBoxConsumPrice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // dateTimePickerDateEnd
@@ -53,7 +57,7 @@
             // 
             // buttonWorksUpdate
             // 
-            this.buttonWorksUpdate.Location = new System.Drawing.Point(12, 117);
+            this.buttonWorksUpdate.Location = new System.Drawing.Point(12, 257);
             this.buttonWorksUpdate.Name = "buttonWorksUpdate";
             this.buttonWorksUpdate.Size = new System.Drawing.Size(261, 23);
             this.buttonWorksUpdate.TabIndex = 2;
@@ -81,11 +85,50 @@
             this.radioButtonDateEnd.Text = "Изменить дату выполнения заказа";
             this.radioButtonDateEnd.UseVisualStyleBackColor = true;
             // 
+            // richTextBoxConsumables
+            // 
+            this.richTextBoxConsumables.Location = new System.Drawing.Point(12, 144);
+            this.richTextBoxConsumables.Name = "richTextBoxConsumables";
+            this.richTextBoxConsumables.Size = new System.Drawing.Size(261, 58);
+            this.richTextBoxConsumables.TabIndex = 6;
+            this.richTextBoxConsumables.Text = "";
+            // 
+            // radioButtonConsumables
+            // 
+            this.radioButtonConsumables.AutoSize = true;
+            this.radioButtonConsumables.Location = new System.Drawing.Point(13, 121);
+            this.radioButtonConsumables.Name = "radioButtonConsumables";
+            this.radioButtonConsumables.Size = new System.Drawing.Size(236, 17);
+            this.radioButtonConsumables.TabIndex = 7;
+            this.radioButtonConsumables.TabStop = true;
+            this.radioButtonConsumables.Text = "Изменить список расходных материалов";
+            this.radioButtonConsumables.UseVisualStyleBackColor = true;
+            // 
+            // labelConsumPrice
+            // 
+            this.labelConsumPrice.AutoSize = true;
+            this.labelConsumPrice.Location = new System.Drawing.Point(12, 209);
+            this.labelConsumPrice.Name = "labelConsumPrice";
+            this.labelConsumPrice.Size = new System.Drawing.Size(183, 13);
+            this.labelConsumPrice.TabIndex = 8;
+            this.labelConsumPrice.Text = "Стоимость расходных материалов";
+            // 
+            // textBoxConsumPrice
+            // 
+            this.textBoxConsumPrice.Location = new System.Drawing.Point(12, 226);
+            this.textBoxConsumPrice.Name = "textBoxConsumPrice";
+            this.textBoxConsumPrice.Size = new System.Drawing.Size(261, 20);
+            this.textBoxConsumPrice.TabIndex = 9;
+            // 
             // WorkUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 150);
+            this.ClientSize = new System.Drawing.Size(287, 292);
+            this.Controls.Add(this.textBoxConsumPrice);
+            this.Controls.Add(this.labelConsumPrice);
+            this.Controls.Add(this.radioButtonConsumables);
+            this.Controls.Add(this.richTextBoxConsumables);
             this.Controls.Add(this.radioButtonDateEnd);
             this.Controls.Add(this.labelWorkUpdate);
             this.Controls.Add(this.buttonWorksUpdate);
@@ -106,5 +149,9 @@
         private System.Windows.Forms.Button buttonWorksUpdate;
         private System.Windows.Forms.Label labelWorkUpdate;
         private System.Windows.Forms.RadioButton radioButtonDateEnd;
+        private System.Windows.Forms.RichTextBox richTextBoxConsumables;
+        private System.Windows.Forms.RadioButton radioButtonConsumables;
+        private System.Windows.Forms.Label labelConsumPrice;
+        private System.Windows.Forms.TextBox textBoxConsumPrice;
     }
 }

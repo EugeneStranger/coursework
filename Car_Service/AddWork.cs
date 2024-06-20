@@ -97,12 +97,14 @@ namespace Car_Service
             {
                 string cmd = $@"
                 INSERT INTO 
-                    Works (work, date_begin, final_date, car, worker)
+                    Works (work, date_begin, final_date, car, worker, consumables, consumables_price)
                     VALUES ((SELECT work_id FROM WorksList WHERE work_description = '{comboBoxWork.Text}'),
                             CONVERT(date,'{dateTimePickerBegin.Value}',104),
                             CONVERT(date,'{dateTimePickerFinal.Value}',104),
                             '{GetCarID(comboBoxCar.Text)}',
-                            '{GetIDWorker(comboBoxWorker.Text)}')
+                            '{GetIDWorker(comboBoxWorker.Text)}',
+                            '{richTextBoxConsumables.Text}',
+                            CONVERT(money,'{textBoxConsumPrice.Text}'))
                 ";
                 connection.Open();
                 SqlCommand command = new SqlCommand(cmd, connection);

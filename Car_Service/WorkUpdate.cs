@@ -33,6 +33,18 @@ namespace Car_Service
             mainForm.LoadFIOToComboBox(comboBoxWorkerUpdate, "Workers", "last_name", "first_name", "middle_name", "Выберите работника");
             work_id = id;
         }
+        public void LoadData(int work_id)
+        {
+//            string cmd = $@"
+//SELECT  consumables FROM Works
+//WHERE   works_id = {work_id}
+//                ";
+//            connection.Open();
+//            SqlCommand command = new SqlCommand(cmd, connection);
+//            //command.ExecuteNonQuery();
+//            richTextBoxConsumables = 
+//            connection.Close();
+        }
         public int GetIDWorker(string full_name)
         {
             int id = 0;
@@ -71,6 +83,19 @@ WHERE   works_id = {work_id}
                 cmd = $@"
 UPDATE  Works
 SET     worker = {GetIDWorker(comboBoxWorkerUpdate.Text)}
+WHERE   works_id = {work_id}
+                ";
+                connection.Open();
+                SqlCommand command = new SqlCommand(cmd, connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+            if (radioButtonConsumables.Checked == true)
+            {
+                cmd = $@"
+UPDATE  Works
+SET     consumables         = '{richTextBoxConsumables.Text}',
+        consumables_price   = CONVERT(money,'{textBoxConsumPrice.Text}')
 WHERE   works_id = {work_id}
                 ";
                 connection.Open();
