@@ -246,9 +246,9 @@ FROM    Workers
         {
             if (dateTimePickerBegin.Value <= dateTimePickerEnd.Value)
             {
-                String date_begin = dateTimePickerBegin.Value.ToString();
-                String date_end = dateTimePickerEnd.Value.ToString();
-                LoadWorks($"Works.date_begin >= CONVERT(date,'{date_begin}',104) AND Works.date_begin <= CONVERT(date,'{date_end}',104)");  
+                //String date_begin = dateTimePickerBegin.Value.ToString();
+                //String date_end = dateTimePickerEnd.Value.ToString();
+                LoadWorks($"Works.date_begin >= CONVERT(date,'{dateTimePickerBegin.Value}',104) AND Works.date_begin <= CONVERT(date,'{dateTimePickerEnd.Value}',104)");  
             }
         }
 
