@@ -50,10 +50,10 @@ SELECT
         [Срок выполнения заказа]            = FORMAT(final_date, 'dd.MM.yyyy'),
         [Дата Выполнения]                   = FORMAT(date_end, 'dd.MM.yyyy'),
         [Работник]                          = FORMATMESSAGE('%s %s %s', Workers.last_name, Workers.first_name, Workers.middle_name),
-        [Стоимость работы]                  = WorksList.Price * Cars.coef,
+        [Стоимость работы]                  = CONVERT(money, WorksList.Price * Cars.coef),
         [Расходные материалы]               = consumables,
         [Стоимость расходных материалов]    = consumables_price,
-        [Общая стоимость работ]             = WorksList.Price * Cars.coef+consumables_price
+        [Общая стоимость работ]             = CONVERT(money, WorksList.Price * Cars.coef+consumables_price)
 FROM    Works, WorksList, Cars, Workers
 WHERE   Works.[work] = WorksList.work_id
 AND     Works.worker = Workers.worker_id
@@ -119,15 +119,16 @@ WHERE   Cars.Owner = Owners.owner_id
             connection.Open();
             string cmd = $@"
 SELECT
-        [id]            = owner_id,
-        [Фамилия]       = last_name,
-        [Имя]           = first_name,
-        [Отчество]      = middle_name
+        [id]                = owner_id,
+        [Фамилия]           = last_name,
+        [Имя]               = first_name,
+        [Отчество]          = middle_name,
+        [Номер телефона]    = phone
 FROM    Owners
             ";
             if (condition != null)
             {
-                cmd += $" AND {condition}";
+                cmd += $" WHERE {condition}";
             }
             SqlCommand command = new SqlCommand(cmd, connection);
             reader = command.ExecuteReader();
@@ -150,10 +151,11 @@ FROM    Owners
             connection.Open();
             string cmd = $@"
 SELECT
-        [id]            = worker_id,
-        [Фамилия]       = last_name,
-        [Имя]           = first_name,
-        [Отчество]      = middle_name
+        [id]                    = worker_id,
+        [Фамилия]               = last_name,
+        [Имя]                   = first_name,
+        [Отчество]              = middle_name,
+        [Паспортные данные]     = passport_number
 FROM    Workers
             ";
             if (condition != null)
@@ -269,7 +271,8 @@ FROM    Workers
         private void buttonChange_Click(object sender, EventArgs e)
         {
             //if (dataGridViewWorks.SelectedRows != 0)
-            int id = Convert.ToInt32(dataGridViewWorks.SelectedCells[0].Value);
+            //int id = Convert.ToInt32(dataGridViewWorks.SelectedCells[0].Value);
+            int id = Convert.ToInt32(dataGridViewWorks.Rows[dataGridViewWorks.SelectedCells[0].RowIndex].Cells[0].Value);
             WorkUpdate work_update = new WorkUpdate(this, id);
             DialogResult result = work_update.ShowDialog();
             LoadWorks();
@@ -282,7 +285,7 @@ FROM    Workers
 
         private void buttonDeleteWork_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dataGridViewWorks.SelectedCells[0].Value);
+            int id = Convert.ToInt32(dataGridViewWorks.Rows[dataGridViewWorks.SelectedCells[0].RowIndex].Cells[0].Value);
 
             DialogResult dialogResult = MessageBox.Show(this,"Удалить запись?", "Удаление", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -302,7 +305,7 @@ WHERE  works_id = '{id}'
 
         private void buttonFindCar_Click(object sender, EventArgs e)
         {
-            LoadCars($"Cars.registration_number = '{textBoxRegistrationNumber.Text}'");
+            LoadCars($"Cars.registration_number = '{maskedTextBoxNumber.Text}'");
         }
 
         private void buttonAllCars_Click(object sender, EventArgs e)
@@ -312,7 +315,7 @@ WHERE  works_id = '{id}'
 
         private void buttonCarChange_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dataGridViewCars.SelectedCells[0].Value);
+            int id = Convert.ToInt32(dataGridViewCars.Rows[dataGridViewWorks.SelectedCells[0].RowIndex].Cells[0].Value);
             CarUpdate car_update = new CarUpdate(this, id);
             DialogResult result = car_update.ShowDialog();
             LoadCars();
@@ -326,6 +329,49 @@ WHERE  works_id = '{id}'
         }
 
         private void dataGridViewOwners_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttoncSelectedCar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridViewCars.Rows[dataGridViewCars.SelectedCells[0].RowIndex].Cells[0].Value);
+            LoadWorks($"Works.car = '{id}'");
+            tabControl.SelectTab(tabPageWorks);
+        }
+
+        private void buttonOwnerCars_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridViewOwners.Rows[dataGridViewOwners.SelectedCells[0].RowIndex].Cells[0].Value);
+            LoadCars($"Cars.owner = '{id}'");
+            tabControl.SelectTab(tabPageCars);
+        }
+
+        private void buttonAllOwners_Click(object sender, EventArgs e)
+        {
+            LoadOwners();
+        }
+
+        private void buttonFindOwner_Click(object sender, EventArgs e)
+        {
+            LoadOwners($"Owners.last_name = '{textBoxLastName.Text}'");
+        }
+
+        private void buttonWorkerWorks_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridViewWorker.Rows[dataGridViewWorker.SelectedCells[0].RowIndex].Cells[0].Value);
+            LoadWorks($"worker = '{id}'");
+            tabControl.SelectTab(tabPageWorks);
+        }
+
+        private void buttonAddWorker_Click(object sender, EventArgs e)
+        {
+            AddWorker add_worker = new AddWorker();
+            DialogResult result = add_worker.ShowDialog();
+            LoadWorkers();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

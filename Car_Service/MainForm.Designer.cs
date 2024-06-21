@@ -45,15 +45,22 @@
             this.buttonInWork = new System.Windows.Forms.Button();
             this.dataGridViewWorks = new System.Windows.Forms.DataGridView();
             this.tabPageCars = new System.Windows.Forms.TabPage();
+            this.buttoncSelectedCar = new System.Windows.Forms.Button();
+            this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
             this.buttonCarAdd = new System.Windows.Forms.Button();
             this.buttonCarChange = new System.Windows.Forms.Button();
             this.buttonAllCars = new System.Windows.Forms.Button();
-            this.textBoxRegistrationNumber = new System.Windows.Forms.TextBox();
             this.buttonFindCar = new System.Windows.Forms.Button();
             this.dataGridViewCars = new System.Windows.Forms.DataGridView();
             this.tabPageOwners = new System.Windows.Forms.TabPage();
+            this.buttonAllOwners = new System.Windows.Forms.Button();
+            this.buttonOwnerCars = new System.Windows.Forms.Button();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.buttonFindOwner = new System.Windows.Forms.Button();
             this.dataGridViewOwners = new System.Windows.Forms.DataGridView();
             this.tabPageWorker = new System.Windows.Forms.TabPage();
+            this.buttonAddWorker = new System.Windows.Forms.Button();
+            this.buttonWorkerWorks = new System.Windows.Forms.Button();
             this.dataGridViewWorker = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tabPageWorks.SuspendLayout();
@@ -238,10 +245,11 @@
             // 
             // tabPageCars
             // 
+            this.tabPageCars.Controls.Add(this.buttoncSelectedCar);
+            this.tabPageCars.Controls.Add(this.maskedTextBoxNumber);
             this.tabPageCars.Controls.Add(this.buttonCarAdd);
             this.tabPageCars.Controls.Add(this.buttonCarChange);
             this.tabPageCars.Controls.Add(this.buttonAllCars);
-            this.tabPageCars.Controls.Add(this.textBoxRegistrationNumber);
             this.tabPageCars.Controls.Add(this.buttonFindCar);
             this.tabPageCars.Controls.Add(this.dataGridViewCars);
             this.tabPageCars.Location = new System.Drawing.Point(4, 22);
@@ -252,9 +260,28 @@
             this.tabPageCars.Text = "Автомобили";
             this.tabPageCars.UseVisualStyleBackColor = true;
             // 
+            // buttoncSelectedCar
+            // 
+            this.buttoncSelectedCar.Location = new System.Drawing.Point(7, 34);
+            this.buttoncSelectedCar.Name = "buttoncSelectedCar";
+            this.buttoncSelectedCar.Size = new System.Drawing.Size(252, 23);
+            this.buttoncSelectedCar.TabIndex = 7;
+            this.buttoncSelectedCar.Text = "Показать заказы на выбранный автомобиль";
+            this.buttoncSelectedCar.UseVisualStyleBackColor = true;
+            this.buttoncSelectedCar.Click += new System.EventHandler(this.buttoncSelectedCar_Click);
+            // 
+            // maskedTextBoxNumber
+            // 
+            this.maskedTextBoxNumber.Location = new System.Drawing.Point(357, 35);
+            this.maskedTextBoxNumber.Mask = "L000LL009";
+            this.maskedTextBoxNumber.Name = "maskedTextBoxNumber";
+            this.maskedTextBoxNumber.Size = new System.Drawing.Size(168, 20);
+            this.maskedTextBoxNumber.TabIndex = 6;
+            // 
             // buttonCarAdd
             // 
-            this.buttonCarAdd.Location = new System.Drawing.Point(627, 36);
+            this.buttonCarAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCarAdd.Location = new System.Drawing.Point(627, 31);
             this.buttonCarAdd.Name = "buttonCarAdd";
             this.buttonCarAdd.Size = new System.Drawing.Size(298, 23);
             this.buttonCarAdd.TabIndex = 5;
@@ -264,6 +291,7 @@
             // 
             // buttonCarChange
             // 
+            this.buttonCarChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCarChange.Location = new System.Drawing.Point(627, 6);
             this.buttonCarChange.Name = "buttonCarChange";
             this.buttonCarChange.Size = new System.Drawing.Size(298, 23);
@@ -276,23 +304,15 @@
             // 
             this.buttonAllCars.Location = new System.Drawing.Point(7, 7);
             this.buttonAllCars.Name = "buttonAllCars";
-            this.buttonAllCars.Size = new System.Drawing.Size(177, 23);
+            this.buttonAllCars.Size = new System.Drawing.Size(252, 23);
             this.buttonAllCars.TabIndex = 3;
             this.buttonAllCars.Text = "Показать все автомобили";
             this.buttonAllCars.UseVisualStyleBackColor = true;
             this.buttonAllCars.Click += new System.EventHandler(this.buttonAllCars_Click);
             // 
-            // textBoxRegistrationNumber
-            // 
-            this.textBoxRegistrationNumber.Location = new System.Drawing.Point(190, 36);
-            this.textBoxRegistrationNumber.Name = "textBoxRegistrationNumber";
-            this.textBoxRegistrationNumber.Size = new System.Drawing.Size(168, 20);
-            this.textBoxRegistrationNumber.TabIndex = 2;
-            this.textBoxRegistrationNumber.Text = "Введите номер автомобиля";
-            // 
             // buttonFindCar
             // 
-            this.buttonFindCar.Location = new System.Drawing.Point(190, 6);
+            this.buttonFindCar.Location = new System.Drawing.Point(357, 7);
             this.buttonFindCar.Name = "buttonFindCar";
             this.buttonFindCar.Size = new System.Drawing.Size(168, 23);
             this.buttonFindCar.TabIndex = 1;
@@ -314,6 +334,10 @@
             // 
             // tabPageOwners
             // 
+            this.tabPageOwners.Controls.Add(this.buttonAllOwners);
+            this.tabPageOwners.Controls.Add(this.buttonOwnerCars);
+            this.tabPageOwners.Controls.Add(this.textBoxLastName);
+            this.tabPageOwners.Controls.Add(this.buttonFindOwner);
             this.tabPageOwners.Controls.Add(this.dataGridViewOwners);
             this.tabPageOwners.Location = new System.Drawing.Point(4, 22);
             this.tabPageOwners.Name = "tabPageOwners";
@@ -322,6 +346,45 @@
             this.tabPageOwners.TabIndex = 2;
             this.tabPageOwners.Text = "Владельцы";
             this.tabPageOwners.UseVisualStyleBackColor = true;
+            // 
+            // buttonAllOwners
+            // 
+            this.buttonAllOwners.Location = new System.Drawing.Point(7, 35);
+            this.buttonAllOwners.Name = "buttonAllOwners";
+            this.buttonAllOwners.Size = new System.Drawing.Size(259, 23);
+            this.buttonAllOwners.TabIndex = 5;
+            this.buttonAllOwners.Text = "Показать всех владельцев";
+            this.buttonAllOwners.UseVisualStyleBackColor = true;
+            this.buttonAllOwners.Click += new System.EventHandler(this.buttonAllOwners_Click);
+            // 
+            // buttonOwnerCars
+            // 
+            this.buttonOwnerCars.Location = new System.Drawing.Point(7, 6);
+            this.buttonOwnerCars.Name = "buttonOwnerCars";
+            this.buttonOwnerCars.Size = new System.Drawing.Size(259, 23);
+            this.buttonOwnerCars.TabIndex = 3;
+            this.buttonOwnerCars.Text = "Показать автомобили выбранного владельца";
+            this.buttonOwnerCars.UseVisualStyleBackColor = true;
+            this.buttonOwnerCars.Click += new System.EventHandler(this.buttonOwnerCars_Click);
+            // 
+            // textBoxLastName
+            // 
+            this.textBoxLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLastName.Location = new System.Drawing.Point(657, 35);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(268, 20);
+            this.textBoxLastName.TabIndex = 2;
+            // 
+            // buttonFindOwner
+            // 
+            this.buttonFindOwner.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFindOwner.Location = new System.Drawing.Point(657, 6);
+            this.buttonFindOwner.Name = "buttonFindOwner";
+            this.buttonFindOwner.Size = new System.Drawing.Size(268, 23);
+            this.buttonFindOwner.TabIndex = 1;
+            this.buttonFindOwner.Text = "Найти владельца по фамилии";
+            this.buttonFindOwner.UseVisualStyleBackColor = true;
+            this.buttonFindOwner.Click += new System.EventHandler(this.buttonFindOwner_Click);
             // 
             // dataGridViewOwners
             // 
@@ -335,6 +398,8 @@
             // 
             // tabPageWorker
             // 
+            this.tabPageWorker.Controls.Add(this.buttonAddWorker);
+            this.tabPageWorker.Controls.Add(this.buttonWorkerWorks);
             this.tabPageWorker.Controls.Add(this.dataGridViewWorker);
             this.tabPageWorker.Location = new System.Drawing.Point(4, 22);
             this.tabPageWorker.Name = "tabPageWorker";
@@ -344,13 +409,33 @@
             this.tabPageWorker.Text = "Работники";
             this.tabPageWorker.UseVisualStyleBackColor = true;
             // 
+            // buttonAddWorker
+            // 
+            this.buttonAddWorker.Location = new System.Drawing.Point(689, 6);
+            this.buttonAddWorker.Name = "buttonAddWorker";
+            this.buttonAddWorker.Size = new System.Drawing.Size(236, 23);
+            this.buttonAddWorker.TabIndex = 2;
+            this.buttonAddWorker.Text = "Добавить работника";
+            this.buttonAddWorker.UseVisualStyleBackColor = true;
+            this.buttonAddWorker.Click += new System.EventHandler(this.buttonAddWorker_Click);
+            // 
+            // buttonWorkerWorks
+            // 
+            this.buttonWorkerWorks.Location = new System.Drawing.Point(6, 6);
+            this.buttonWorkerWorks.Name = "buttonWorkerWorks";
+            this.buttonWorkerWorks.Size = new System.Drawing.Size(236, 23);
+            this.buttonWorkerWorks.TabIndex = 1;
+            this.buttonWorkerWorks.Text = "Показать заказы выбранного работника";
+            this.buttonWorkerWorks.UseVisualStyleBackColor = true;
+            this.buttonWorkerWorks.Click += new System.EventHandler(this.buttonWorkerWorks_Click);
+            // 
             // dataGridViewWorker
             // 
             this.dataGridViewWorker.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewWorker.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewWorker.Location = new System.Drawing.Point(4, 54);
+            this.dataGridViewWorker.Location = new System.Drawing.Point(4, 35);
             this.dataGridViewWorker.Name = "dataGridViewWorker";
-            this.dataGridViewWorker.Size = new System.Drawing.Size(924, 444);
+            this.dataGridViewWorker.Size = new System.Drawing.Size(924, 447);
             this.dataGridViewWorker.TabIndex = 0;
             // 
             // MainForm
@@ -362,6 +447,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авто Сервис";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPageWorks.ResumeLayout(false);
             this.tabPageWorks.PerformLayout();
@@ -372,6 +458,7 @@
             this.tabPageCars.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCars)).EndInit();
             this.tabPageOwners.ResumeLayout(false);
+            this.tabPageOwners.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOwners)).EndInit();
             this.tabPageWorker.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWorker)).EndInit();
@@ -399,7 +486,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelCount;
         private System.Windows.Forms.Button buttonAll;
         private System.Windows.Forms.DataGridView dataGridViewCars;
-        private System.Windows.Forms.TextBox textBoxRegistrationNumber;
         private System.Windows.Forms.Button buttonFindCar;
         private System.Windows.Forms.Button buttonAllCars;
         private System.Windows.Forms.Button buttonCarAdd;
@@ -408,6 +494,14 @@
         private System.Windows.Forms.DataGridView dataGridViewOwners;
         private System.Windows.Forms.TabPage tabPageWorker;
         private System.Windows.Forms.DataGridView dataGridViewWorker;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNumber;
+        private System.Windows.Forms.Button buttoncSelectedCar;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.Button buttonFindOwner;
+        private System.Windows.Forms.Button buttonOwnerCars;
+        private System.Windows.Forms.Button buttonAllOwners;
+        private System.Windows.Forms.Button buttonWorkerWorks;
+        private System.Windows.Forms.Button buttonAddWorker;
     }
 }
 

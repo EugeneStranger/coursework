@@ -32,18 +32,27 @@ namespace Car_Service
             connection = new SqlConnection(connectionString);
             mainForm.LoadFIOToComboBox(comboBoxWorkerUpdate, "Workers", "last_name", "first_name", "middle_name", "Выберите работника");
             work_id = id;
+            LoadData(id);
         }
-        public void LoadData(int work_id)
+        private void LoadData(int work_id)
         {
-//            string cmd = $@"
-//SELECT  consumables FROM Works
-//WHERE   works_id = {work_id}
-//                ";
-//            connection.Open();
-//            SqlCommand command = new SqlCommand(cmd, connection);
-//            //command.ExecuteNonQuery();
-//            richTextBoxConsumables = 
-//            connection.Close();
+            string cmd = $@"
+SELECT  consumables FROM Works
+WHERE   works_id = {work_id}
+            ";
+            connection.Open();
+            SqlCommand command = new SqlCommand(cmd, connection);
+            richTextBoxConsumables.Text = command.ExecuteScalar().ToString();
+            connection.Close();
+            cmd = $@"
+SELECT  consumables_price FROM Works
+WHERE   works_id = {work_id}
+            ";
+            connection.Open();
+            command = new SqlCommand(cmd, connection);
+            textBoxConsumPrice.Text = command.ExecuteScalar().ToString();
+            connection.Close();
+
         }
         public int GetIDWorker(string full_name)
         {

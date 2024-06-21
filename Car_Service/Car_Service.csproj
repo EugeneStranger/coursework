@@ -59,6 +59,12 @@
     <Compile Include="AddWork.Designer.cs">
       <DependentUpon>AddWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddWorker.Designer.cs">
+      <DependentUpon>AddWorker.cs</DependentUpon>
+    </Compile>
     <Compile Include="CarUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddWork.resx">
       <DependentUpon>AddWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddWorker.resx">
+      <DependentUpon>AddWorker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CarUpdate.resx">
       <DependentUpon>CarUpdate.cs</DependentUpon>

@@ -32,11 +32,11 @@ namespace Car_Service
         private void buttonChangeCar_Click(object sender, EventArgs e)
         {
             string cmd;
-            if (radioButtonNumber.Checked == true)
+            if (checkBoxNumber.Checked == true & maskedTextBoxNumber.Text !="")
             {
                 cmd = $@"
                 UPDATE  Cars
-                SET     Cars.registration_number = '{textBoxNumber.Text}'
+                SET     Cars.registration_number = '{maskedTextBoxNumber.Text}'
                 WHERE   car_id = {car_id}
                 ";
                 connection.Open();
@@ -44,7 +44,7 @@ namespace Car_Service
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-            if (radioButtonOwner.Checked == true)
+            if (checkBoxOwner.Checked == true & textBoxLastName.Text !="" & textBoxFirstName.Text != "")
             {
                 cmd = $@"
                  IF NOT EXISTS (SELECT owner_id FROM Owners 
@@ -59,7 +59,8 @@ namespace Car_Service
                 DECLARE @owner INT = (SELECT owner_id FROM Owners
                                   WHERE last_name = '{textBoxLastName.Text}'
                                   AND   first_name = '{textBoxFirstName.Text}'
-                                  AND   middle_name = '{textBoxMiddleName.Text}')
+                                  AND   middle_name = '{textBoxMiddleName.Text}'
+                                  AND   phone       = '{maskedTextBoxPhone}')
                 UPDATE  Cars
                 SET     Cars.owner = @owner
                 WHERE   car_id = {car_id}

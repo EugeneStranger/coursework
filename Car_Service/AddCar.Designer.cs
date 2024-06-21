@@ -34,7 +34,6 @@
             this.labelModel = new System.Windows.Forms.Label();
             this.textBoxModel = new System.Windows.Forms.TextBox();
             this.labelNumber = new System.Windows.Forms.Label();
-            this.textBoxNumber = new System.Windows.Forms.TextBox();
             this.labelDateIssue = new System.Windows.Forms.Label();
             this.dateTimePickerIssue = new System.Windows.Forms.DateTimePicker();
             this.labelCar = new System.Windows.Forms.Label();
@@ -47,6 +46,9 @@
             this.textBoxMiddleName = new System.Windows.Forms.TextBox();
             this.labelCoef = new System.Windows.Forms.Label();
             this.textBoxCoef = new System.Windows.Forms.TextBox();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.maskedTextBoxPhone = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxNumber = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -99,13 +101,6 @@
             this.labelNumber.Size = new System.Drawing.Size(177, 13);
             this.labelNumber.TabIndex = 7;
             this.labelNumber.Text = "Введите регистрационный номер";
-            // 
-            // textBoxNumber
-            // 
-            this.textBoxNumber.Location = new System.Drawing.Point(12, 152);
-            this.textBoxNumber.Name = "textBoxNumber";
-            this.textBoxNumber.Size = new System.Drawing.Size(271, 20);
-            this.textBoxNumber.TabIndex = 8;
             // 
             // labelDateIssue
             // 
@@ -205,11 +200,39 @@
             this.textBoxCoef.Size = new System.Drawing.Size(271, 20);
             this.textBoxCoef.TabIndex = 20;
             // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(322, 175);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(136, 13);
+            this.labelPhone.TabIndex = 21;
+            this.labelPhone.Text = "Введите номер телефона";
+            // 
+            // maskedTextBoxPhone
+            // 
+            this.maskedTextBoxPhone.Location = new System.Drawing.Point(322, 192);
+            this.maskedTextBoxPhone.Mask = "+7(999) 000-0000";
+            this.maskedTextBoxPhone.Name = "maskedTextBoxPhone";
+            this.maskedTextBoxPhone.Size = new System.Drawing.Size(240, 20);
+            this.maskedTextBoxPhone.TabIndex = 22;
+            // 
+            // maskedTextBoxNumber
+            // 
+            this.maskedTextBoxNumber.Location = new System.Drawing.Point(12, 152);
+            this.maskedTextBoxNumber.Mask = "L000LL009";
+            this.maskedTextBoxNumber.Name = "maskedTextBoxNumber";
+            this.maskedTextBoxNumber.Size = new System.Drawing.Size(271, 20);
+            this.maskedTextBoxNumber.TabIndex = 23;
+            // 
             // AddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 302);
+            this.Controls.Add(this.maskedTextBoxNumber);
+            this.Controls.Add(this.maskedTextBoxPhone);
+            this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.textBoxCoef);
             this.Controls.Add(this.labelCoef);
             this.Controls.Add(this.textBoxMiddleName);
@@ -222,7 +245,6 @@
             this.Controls.Add(this.labelCar);
             this.Controls.Add(this.dateTimePickerIssue);
             this.Controls.Add(this.labelDateIssue);
-            this.Controls.Add(this.textBoxNumber);
             this.Controls.Add(this.labelNumber);
             this.Controls.Add(this.textBoxModel);
             this.Controls.Add(this.labelModel);
@@ -232,6 +254,7 @@
             this.Name = "AddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddCar";
+            this.Load += new System.EventHandler(this.AddCar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,7 +268,6 @@
         private System.Windows.Forms.Label labelModel;
         private System.Windows.Forms.TextBox textBoxModel;
         private System.Windows.Forms.Label labelNumber;
-        private System.Windows.Forms.TextBox textBoxNumber;
         private System.Windows.Forms.Label labelDateIssue;
         private System.Windows.Forms.DateTimePicker dateTimePickerIssue;
         private System.Windows.Forms.Label labelCar;
@@ -258,5 +280,8 @@
         private System.Windows.Forms.TextBox textBoxMiddleName;
         private System.Windows.Forms.Label labelCoef;
         private System.Windows.Forms.TextBox textBoxCoef;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPhone;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNumber;
     }
 }

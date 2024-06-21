@@ -31,11 +31,12 @@ namespace Car_Service
                  IF NOT EXISTS (SELECT owner_id FROM Owners 
                  WHERE last_name = '{textBoxLastName.Text}'
                  AND first_name = '{textBoxFirstName.Text}'
-                 AND middle_name = '{textBoxMiddleName.Text}')
+                 AND middle_name = '{textBoxMiddleName.Text}'
+                 AND phone       = '{maskedTextBoxPhone.Text}')
                  BEGIN
                     INSERT INTO 
-                    Owners (last_name, first_name, middle_name)
-                    VALUES ('{textBoxLastName.Text}', '{textBoxFirstName.Text}', '{textBoxMiddleName.Text}')
+                    Owners (last_name, first_name, middle_name, phone)
+                    VALUES ('{textBoxLastName.Text}', '{textBoxFirstName.Text}', '{textBoxMiddleName.Text}', '{maskedTextBoxPhone.Text}')
                 END
 ";
             connection.Open();
@@ -44,19 +45,20 @@ namespace Car_Service
             connection.Close();
             this.Close();
             cmd = $@"
-                IF NOT EXIST
+                IF NOT EXISTS
                 (SELECT car_id FROM Cars 
-                 WHERE registration_number = '{textBoxNumber.Text}')
+                 WHERE registration_number = '{maskedTextBoxNumber.Text}')
                 BEGIN
                 DECLARE @owner INT = (SELECT owner_id FROM Owners
                                   WHERE last_name = '{textBoxLastName.Text}'
                                   AND   first_name = '{textBoxFirstName.Text}'
-                                  AND   middle_name = '{textBoxMiddleName.Text}')
+                                  AND   middle_name = '{textBoxMiddleName.Text}'
+                                  AND   phone       = '{maskedTextBoxPhone.Text}')
                 INSERT INTO 
                     Cars (manufacturer, model, registration_number, owner, date_of_issue, coef)
                     VALUES ('{textBoxManufacture.Text}',
                             '{textBoxModel.Text}',
-                            '{textBoxNumber.Text}',
+                            '{maskedTextBoxNumber.Text}',
                             @owner,
                             CONVERT(date,'{dateTimePickerIssue.Value}',104),
                             CONVERT(float,'{textBoxCoef.Text}')
@@ -68,6 +70,11 @@ namespace Car_Service
             command.ExecuteNonQuery();
             connection.Close();
             this.Close();
+        }
+
+        private void AddCar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
