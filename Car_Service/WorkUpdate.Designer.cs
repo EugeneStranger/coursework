@@ -32,11 +32,11 @@
             this.comboBoxWorkerUpdate = new System.Windows.Forms.ComboBox();
             this.buttonWorksUpdate = new System.Windows.Forms.Button();
             this.labelWorkUpdate = new System.Windows.Forms.Label();
-            this.radioButtonDateEnd = new System.Windows.Forms.RadioButton();
             this.richTextBoxConsumables = new System.Windows.Forms.RichTextBox();
-            this.radioButtonConsumables = new System.Windows.Forms.RadioButton();
             this.labelConsumPrice = new System.Windows.Forms.Label();
             this.textBoxConsumPrice = new System.Windows.Forms.TextBox();
+            this.checkBoxDateEnd = new System.Windows.Forms.CheckBox();
+            this.checkBoxConsumables = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // dateTimePickerDateEnd
@@ -74,17 +74,6 @@
             this.labelWorkUpdate.TabIndex = 4;
             this.labelWorkUpdate.Text = "Редактирование заказа №";
             // 
-            // radioButtonDateEnd
-            // 
-            this.radioButtonDateEnd.AutoSize = true;
-            this.radioButtonDateEnd.Location = new System.Drawing.Point(13, 41);
-            this.radioButtonDateEnd.Name = "radioButtonDateEnd";
-            this.radioButtonDateEnd.Size = new System.Drawing.Size(205, 17);
-            this.radioButtonDateEnd.TabIndex = 5;
-            this.radioButtonDateEnd.TabStop = true;
-            this.radioButtonDateEnd.Text = "Изменить дату выполнения заказа";
-            this.radioButtonDateEnd.UseVisualStyleBackColor = true;
-            // 
             // richTextBoxConsumables
             // 
             this.richTextBoxConsumables.Location = new System.Drawing.Point(12, 144);
@@ -92,17 +81,6 @@
             this.richTextBoxConsumables.Size = new System.Drawing.Size(261, 58);
             this.richTextBoxConsumables.TabIndex = 6;
             this.richTextBoxConsumables.Text = "";
-            // 
-            // radioButtonConsumables
-            // 
-            this.radioButtonConsumables.AutoSize = true;
-            this.radioButtonConsumables.Location = new System.Drawing.Point(13, 121);
-            this.radioButtonConsumables.Name = "radioButtonConsumables";
-            this.radioButtonConsumables.Size = new System.Drawing.Size(236, 17);
-            this.radioButtonConsumables.TabIndex = 7;
-            this.radioButtonConsumables.TabStop = true;
-            this.radioButtonConsumables.Text = "Изменить список расходных материалов";
-            this.radioButtonConsumables.UseVisualStyleBackColor = true;
             // 
             // labelConsumPrice
             // 
@@ -120,16 +98,36 @@
             this.textBoxConsumPrice.Size = new System.Drawing.Size(261, 20);
             this.textBoxConsumPrice.TabIndex = 9;
             // 
+            // checkBoxDateEnd
+            // 
+            this.checkBoxDateEnd.AutoSize = true;
+            this.checkBoxDateEnd.Location = new System.Drawing.Point(12, 41);
+            this.checkBoxDateEnd.Name = "checkBoxDateEnd";
+            this.checkBoxDateEnd.Size = new System.Drawing.Size(206, 17);
+            this.checkBoxDateEnd.TabIndex = 10;
+            this.checkBoxDateEnd.Text = "Изменить дату выполнения заказа";
+            this.checkBoxDateEnd.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxConsumables
+            // 
+            this.checkBoxConsumables.AutoSize = true;
+            this.checkBoxConsumables.Location = new System.Drawing.Point(12, 121);
+            this.checkBoxConsumables.Name = "checkBoxConsumables";
+            this.checkBoxConsumables.Size = new System.Drawing.Size(237, 17);
+            this.checkBoxConsumables.TabIndex = 11;
+            this.checkBoxConsumables.Text = "Изменить список расходных материалов";
+            this.checkBoxConsumables.UseVisualStyleBackColor = true;
+            // 
             // WorkUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 292);
+            this.Controls.Add(this.checkBoxConsumables);
+            this.Controls.Add(this.checkBoxDateEnd);
             this.Controls.Add(this.textBoxConsumPrice);
             this.Controls.Add(this.labelConsumPrice);
-            this.Controls.Add(this.radioButtonConsumables);
             this.Controls.Add(this.richTextBoxConsumables);
-            this.Controls.Add(this.radioButtonDateEnd);
             this.Controls.Add(this.labelWorkUpdate);
             this.Controls.Add(this.buttonWorksUpdate);
             this.Controls.Add(this.comboBoxWorkerUpdate);
@@ -148,10 +146,10 @@
         private System.Windows.Forms.ComboBox comboBoxWorkerUpdate;
         private System.Windows.Forms.Button buttonWorksUpdate;
         private System.Windows.Forms.Label labelWorkUpdate;
-        private System.Windows.Forms.RadioButton radioButtonDateEnd;
         private System.Windows.Forms.RichTextBox richTextBoxConsumables;
-        private System.Windows.Forms.RadioButton radioButtonConsumables;
         private System.Windows.Forms.Label labelConsumPrice;
         private System.Windows.Forms.TextBox textBoxConsumPrice;
+        private System.Windows.Forms.CheckBox checkBoxDateEnd;
+        private System.Windows.Forms.CheckBox checkBoxConsumables;
     }
 }

@@ -75,7 +75,7 @@ WHERE   works_id = {work_id}
         private void buttonWorksUpdate_Click(object sender, EventArgs e)
         {
             string cmd;
-            if (radioButtonDateEnd.Checked == true)
+            if (checkBoxDateEnd.Checked == true)
             {
                 cmd = $@"
 UPDATE  Works
@@ -99,7 +99,7 @@ WHERE   works_id = {work_id}
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-            if (radioButtonConsumables.Checked == true)
+            if (checkBoxConsumables.Checked == true)
             {
                 cmd = $@"
 UPDATE  Works
